@@ -15,14 +15,14 @@ end
 
 function self:GetFrequencyAmplitudes ()
 	self.FrequencyAmplitudes = {}
-	for k, v in ipairs (stream.fft) do
+	for k, v in ipairs (stream and stream.fft or {}) do
 		self.FrequencyAmplitudes [k] = v * 100 / 255 - 100
 	end
 	return self.FrequencyAmplitudes
 end
 
 function self:GetSampleAmplitudes ()
-	self.SampleAmplitudes = stream.sampleamps or {}
+	self.SampleAmplitudes = stream and stream.sampleamps or {}
 	return self.SampleAmplitudes
 end
 
