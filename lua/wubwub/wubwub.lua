@@ -4,7 +4,9 @@ WubWub = WubWub or {}
 include ("glib/glib.lua")
 
 GLib.Initialize ("WubWub", WubWub)
-WubWub.AddCSLuaFolderRecursive ("wubwub")
+GLib.AddCSLuaPackFile ("autorun/wubwub.lua")
+GLib.AddCSLuaPackFolderRecursive ("wubwub")
+GLib.AddCSLuaPackSystem ("WubWub")
 
 include ("volume.lua")
 
