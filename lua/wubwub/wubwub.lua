@@ -2,6 +2,7 @@ if WubWub then return end
 WubWub = WubWub or {}
 
 include ("glib/glib.lua")
+include ("gooey/gooey.lua")
 
 GLib.Initialize ("WubWub", WubWub)
 GLib.AddCSLuaPackFile ("autorun/wubwub.lua")
