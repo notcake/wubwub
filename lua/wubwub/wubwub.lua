@@ -5,9 +5,9 @@ include ("glib/glib.lua")
 include ("gooey/gooey.lua")
 
 GLib.Initialize ("WubWub", WubWub)
+GLib.AddCSLuaPackSystem ("WubWub")
 GLib.AddCSLuaPackFile ("autorun/wubwub.lua")
 GLib.AddCSLuaPackFolderRecursive ("wubwub")
-GLib.AddCSLuaPackSystem ("WubWub")
 
 include ("volume.lua")
 
