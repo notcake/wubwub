@@ -32,13 +32,13 @@ function self:ctor ()
 	self.HTMLPanel:SetHTML (WubWub.HTMLPlayerHTML or "")
 	self.HTMLPanel:QueueJavascript ("player.onLuaApiLoaded ()")
 	self.HTMLPanel:QueueJavascript ("player.setVolumeFraction (" .. tostring (WubWub.GetVolume ()) .. ")")
-	WubWub:AddEventListener ("VolumeChanged", tostring (self),
+	WubWub:AddEventListener ("VolumeChanged", self:GetHashCode (),
 		function (_, volume)
 			self.HTMLPanel:QueueJavascript ("player.setVolumeFraction (" .. tostring (volume) .. ")")
 		end
 	)
 	
-	WubWub:AddEventListener ("Unloaded", tostring (self),
+	WubWub:AddEventListener ("Unloaded", self:GetHashCode (),
 		function ()
 			self:dtor ()
 		end
@@ -50,7 +50,7 @@ function self:dtor ()
 		self.HTMLPanel:Remove ()
 	end
 	self.HTMLPanel = nil
-	WubWub:RemoveEventListener ("Unloaded", tostring (self))
+	WubWub:RemoveEventListener ("Unloaded", self:GetHashCode ())
 end
 
 function self:Debug (expression)

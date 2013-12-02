@@ -91,7 +91,7 @@ function self:ctor ()
 		end
 	)
 	
-	WubWub:AddEventListener ("Unloaded", tostring (self),
+	WubWub:AddEventListener ("Unloaded", self:GetHashCode (),
 		function ()
 			self:dtor ()
 		end
@@ -100,7 +100,7 @@ end
 
 function self:dtor ()
 	hook.Remove ("HUDPaint", "WubWub.Visualizer")
-	WubWub:RemoveEventListener ("Unloaded", tostring (self))
+	WubWub:RemoveEventListener ("Unloaded", self:GetHashCode ())
 end
 
 function self:Beat (amplitude)
