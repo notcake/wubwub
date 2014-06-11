@@ -7,11 +7,12 @@ function self:ctor ()
 	self.LastBeatTime = 0
 	self.LastBeatAmplitude = 0
 	
+	local wubwub_hud_enabled = nil
 	hook.Add ("HUDPaint", "WubWub.Visualizer",
 		function ()
 			if not self.FFTSource then return end
-			if not GetConVar ("wubwub_hud_enabled") then return end
-			if not GetConVar ("wubwub_hud_enabled"):GetBool () then return end
+			wubwub_hud_enabled = wubwub_hud_enabled or GetConVar ("wubwub_hud_enabled")
+			if not wubwub_hud_enabled:GetBool () then return end
 			
 			local frequencyAmplitudes = self.FFTSource:GetFrequencyAmplitudes ()
 			local maxI = math.min (#frequencyAmplitudes, math.floor (self.FFTSource:BucketFromFrequency (22050)))
